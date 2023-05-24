@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body, html {
+  width: 100%; 
+  height: 100%;
+}
+
+body{
+   background-color: theme("colors.body");
+   color: theme("colors.white");
+}
