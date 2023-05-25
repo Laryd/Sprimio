@@ -9,6 +9,8 @@ import { IoIosSearch } from "react-icons/io";
 import SearchResult from "../search-result";
 
 const MENU_CLASS = `
+  py-1 
+  px-1.5
   p-1.5
   rounded-md
   hover:bg-primary
@@ -27,11 +29,11 @@ const Header = () => {
   const [keyword, setKeyword] = useState("");
   const [isSearchFocus, setSearchFocus] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
-  const defaultKeyword = useRef('')
+  const defaultKeyword = useRef("");
 
   const goToSearchPage = () => {
     if (keyword) {
-      defaultKeyword.current = keyword
+      defaultKeyword.current = keyword;
       router.push(`/search?q=${keyword}`);
       setSearchFocus(false);
       searchRef.current?.blur();
@@ -58,14 +60,14 @@ const Header = () => {
   useEffect(() => {
     setPathName(pathlocation);
     pathlocationRef.current = pathlocation;
-    defaultKeyword.current = searchparams.get('q') || ''
+    defaultKeyword.current = searchparams.get("q") || "";
   }, [pathlocation]);
 
   useEffect(() => {
     window.addEventListener("click", onWindowClick);
     return () => {
       window.removeEventListener("click", onWindowClick);
-    }
+    };
   }, []);
   return (
     <div className="bg-header">
@@ -89,11 +91,11 @@ const Header = () => {
         {/* search*/}
         <div className="border-b-[1.5px] border-white flex items-center flex-[0.5] relative">
           <input
-          onClick={e => {
-            e.stopPropagation()
-            setSearchFocus(true)
-          }}
-          onKeyDown = {e => e.key === "Enter" ? goToSearchPage(): ""}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSearchFocus(true);
+            }}
+            onKeyDown={(e) => (e.key === "Enter" ? goToSearchPage() : "")}
             onInput={(e) => setKeyword(e.currentTarget.value)}
             value={keyword}
             type="text"
@@ -103,8 +105,10 @@ const Header = () => {
           <IoIosSearch size={18} />
           {/* top result */}
           {isSearchFocus ? (
-            <SearchResult keyword={keyword} goToSearchPage={goToSearchPage}/>
-          ): ""}
+            <SearchResult keyword={keyword} goToSearchPage={goToSearchPage} />
+          ) : (
+            ""
+          )}
         </div>
       </Container>
     </div>

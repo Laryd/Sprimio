@@ -10,9 +10,9 @@ interface Props extends CustomComponentProps {
 export const MovieImage = (props: Props) => {
   return (
     <div
-      className={mergeClassName("bg-primary w-full h-full", props.className)}
+      className={mergeClassName("", props.className)}
     >
-      <Image src={props.src} alt={props.alt} fill />
+      <Image src={props.src} alt={props.alt} width={102} height={72} />
     </div>
   );
 };
