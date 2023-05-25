@@ -12,6 +12,11 @@ module.exports = {
         header: "#282541",
         body: "#1c1829",
       },
+      screens: {
+        mobile: {
+          max: "768px",
+        },
+      },
     },
   },
   plugins: [],
